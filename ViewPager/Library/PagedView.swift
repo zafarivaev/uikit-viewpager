@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol ViewPagerTabViewProtocol: AnyObject {
-    func setupAppearanceForSelected()
-    func setupAppearanceForNotSelected()
-}
-
-protocol ViewPagerTabProtocol: AnyObject {
-    func setupAppearanceForSelected()
-    func setupAppearanceForNotSelected()
-}
-
 protocol PagedViewDelegate: AnyObject {
     func didMoveToPage(index: Int)
 }
@@ -73,10 +63,14 @@ class PagedView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDat
         collectionView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-            collectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            collectionView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            collectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            collectionView.widthAnchor
+                .constraint(equalTo: self.widthAnchor),
+            collectionView.heightAnchor
+                .constraint(equalTo: self.heightAnchor),
+            collectionView.centerXAnchor
+                .constraint(equalTo: self.centerXAnchor),
+            collectionView.centerYAnchor
+                .constraint(equalTo: self.centerYAnchor)
         ])
     }
     
