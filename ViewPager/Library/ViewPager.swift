@@ -27,7 +27,7 @@ class ViewPager: UIView {
     private let tabHeight: CGFloat
     public lazy var tabbedView: TabbedView = {
         let tabbedView = TabbedView(
-            sizeConfiguration: .fillProportionally(height: tabHeight)
+            sizeConfiguration: .fillEqually(height: tabHeight)
         )
         return tabbedView
     }()

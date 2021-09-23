@@ -20,14 +20,31 @@ class ViewController: UIViewController {
             viewPager.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             viewPager.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.7),
             viewPager.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            viewPager.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            viewPager.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "ViewPager"
+        
+        self.navigationController?.navigationBar.standardAppearance.backgroundColor = .systemBlue
+        self.navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     lazy var viewPager: ViewPager = {
         let viewPager = ViewPager(tabHeight: 60)
-        viewPager.tabbedView.tabs = [AppTabItemView(), AppTabItemView(), AppTabItemView()]
-        viewPager.pagedView.pages = [UIView(), UIView(), UIView()]
+        viewPager.tabbedView.tabs = [
+            AppTabItemView(),
+            AppTabItemView(),
+            AppTabItemView(),
+        ]
+        viewPager.pagedView.pages = [
+            UIView(),
+            UIView(),
+            UIView()
+        ]
         viewPager.translatesAutoresizingMaskIntoConstraints = false
         return viewPager
     }()

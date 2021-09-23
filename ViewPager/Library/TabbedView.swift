@@ -14,8 +14,8 @@ protocol TabbedViewDelegate: AnyObject {
 class TabbedView: UIView {
     
     enum SizeConfiguration {
-        case fillProportionally(height: CGFloat)
-        case fixed(width: CGFloat, height: CGFloat)
+        case fillEqually(height: CGFloat, spacing: CGFloat = 0)
+        case fixed(width: CGFloat, height: CGFloat, spacing: CGFloat = 0)
         case automatic
     }
     
@@ -54,6 +54,7 @@ class TabbedView: UIView {
             frame: .zero,
             collectionViewLayout: layout
         )
+        collectionView.backgroundColor = .white
         collectionView.register(TabCollectionViewCell.self, forCellWithReuseIdentifier: "TabCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -97,25 +98,46 @@ extension TabbedView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch sizeConfiguration {
-        case let .fillProportionally(height):
+        case let .fillEqually(height, spacing):
             let totalWidth = self.frame.width
-            let widthPerItem = totalWidth / CGFloat(self.tabs.count)
+            let widthPerItem = (
+                totalWidth - (
+                    spacing * CGFloat((self.tabs.count + 1))
+                )
+            ) / CGFloat(self.tabs.count)
             
-            return CGSize(width: widthPerItem, height: height)
+            return CGSize(width: widthPerItem,
+                          height: height)
             
-        case let .fixed(width, height):
-            return CGSize(width: width, height: height)
+        case let .fixed(width, height, spacing):
+            return CGSize(width: width - (spacing * 2),
+                          height: height)
         case .automatic:
-            return tabs[indexPath.item].frame.size
+            return CGSize(width: tabs[indexPath.item].frame.width,
+                          height: self.frame.height)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        switch sizeConfiguration {
+        case let .fillEqually(_, spacing),
+             let .fixed(_, _, spacing):
+            
+            return spacing
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        switch sizeConfiguration {
+        case let .fillEqually(_, spacing),
+             let .fixed(_, _, spacing):
+            
+            return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        default:
+            return .zero
+        }
     }
 }
 
