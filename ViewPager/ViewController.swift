@@ -34,16 +34,27 @@ class ViewController: UIViewController {
     }
     
     lazy var viewPager: ViewPager = {
-        let viewPager = ViewPager(tabHeight: 60)
+        let viewPager = ViewPager(
+            tabSizeConfiguration: .fillEqually(height: 60, spacing: 0)
+        )
+        let view1 = UIView()
+        view1.backgroundColor = .red
+        
+        let view2 = UIView()
+        view2.backgroundColor = .blue
+        
+        let view3 = UIView()
+        view3.backgroundColor = .orange
+        
         viewPager.tabbedView.tabs = [
-            AppTabItemView(),
-            AppTabItemView(),
-            AppTabItemView(),
+            AppTabItemView(title: "First"),
+            AppTabItemView(title: "Second"),
+            AppTabItemView(title: "Third")
         ]
         viewPager.pagedView.pages = [
-            UIView(),
-            UIView(),
-            UIView()
+            view1,
+            view2,
+            view3
         ]
         viewPager.translatesAutoresizingMaskIntoConstraints = false
         return viewPager

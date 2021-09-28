@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol TabItemProtocol: UIView {
+    func onSelected()
+    func onNotSelected()
+}
+
 class TabCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Initialization

@@ -26,11 +26,6 @@ class PagedView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDat
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Actions
-    public func moveToPage(at index: Int) {
-        self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
-    }
-    
     // MARK: - Properties
     public weak var delegate: PagedViewDelegate?
     public var pages: [UIView] {
@@ -81,8 +76,14 @@ class PagedView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageCollectionViewCell", for: indexPath) as! PageCollectionViewCell
-        cell.titleLabel.text = "\(indexPath.item)"
+        let page = self.pages[indexPath.item]
+        cell.view = page
         return cell
+    }
+    
+    // MARK: - Actions
+    public func moveToPage(at index: Int) {
+        self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     // MARK: - Delegate

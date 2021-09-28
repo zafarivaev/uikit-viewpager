@@ -10,7 +10,6 @@
 		1C71DB4126E14DCA000EB3A6 /* ViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DB4026E14DCA000EB3A6 /* ViewPager.swift */; };
 		1C71DB4326E14DDA000EB3A6 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DB4226E14DD9000EB3A6 /* TabbedView.swift */; };
 		1C71DB4526E15003000EB3A6 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DB4426E15003000EB3A6 /* TabCollectionViewCell.swift */; };
-		1C71DB4726F08305000EB3A6 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DB4626F08305000EB3A6 /* TabItem.swift */; };
 		1C71DB4926F086F9000EB3A6 /* AppTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71DB4826F086F9000EB3A6 /* AppTabItemView.swift */; };
 		1CC9CB8B26D6C21A008C00EB /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC9CB8A26D6C21A008C00EB /* PageCollectionViewCell.swift */; };
 		1CEA624A26C7EFE900066468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA624926C7EFE900066468 /* AppDelegate.swift */; };
@@ -24,7 +23,6 @@
 		1C71DB4026E14DCA000EB3A6 /* ViewPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPager.swift; sourceTree = "<group>"; };
 		1C71DB4226E14DD9000EB3A6 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1C71DB4426E15003000EB3A6 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
-		1C71DB4626F08305000EB3A6 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		1C71DB4826F086F9000EB3A6 /* AppTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabItemView.swift; sourceTree = "<group>"; };
 		1CC9CB8A26D6C21A008C00EB /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		1CEA624626C7EFE900066468 /* ViewPager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewPager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +81,6 @@
 				1C71DB4026E14DCA000EB3A6 /* ViewPager.swift */,
 				1C71DB4226E14DD9000EB3A6 /* TabbedView.swift */,
 				1CEA625D26C7F43E00066468 /* PagedView.swift */,
-				1C71DB4626F08305000EB3A6 /* TabItem.swift */,
 				1C71DB4426E15003000EB3A6 /* TabCollectionViewCell.swift */,
 				1CC9CB8A26D6C21A008C00EB /* PageCollectionViewCell.swift */,
 			);
@@ -166,7 +163,6 @@
 				1CEA625E26C7F43E00066468 /* PagedView.swift in Sources */,
 				1C71DB4926F086F9000EB3A6 /* AppTabItemView.swift in Sources */,
 				1C71DB4326E14DDA000EB3A6 /* TabbedView.swift in Sources */,
-				1C71DB4726F08305000EB3A6 /* TabItem.swift in Sources */,
 				1C71DB4126E14DCA000EB3A6 /* ViewPager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,20 +21,28 @@ class PageCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - UI Properties
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    public var view: UIView? {
+        didSet {
+            self.setupUI()
+        }
+    }
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.contentView.addSubview(titleLabel)
+        guard let view = view else { return }
+        
+        self.contentView.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+            view.leftAnchor
+                .constraint(equalTo: self.contentView.leftAnchor),
+            view.topAnchor
+                .constraint(equalTo: self.contentView.topAnchor),
+            view.rightAnchor
+                .constraint(equalTo: self.contentView.rightAnchor),
+            view.bottomAnchor
+                .constraint(equalTo: self.contentView.bottomAnchor)
         ])
     }
 }

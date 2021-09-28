@@ -10,8 +10,8 @@ import UIKit
 class ViewPager: UIView {
     
     // MARK: - Initialization
-    init(tabHeight: CGFloat) {
-        self.tabHeight = tabHeight
+    init(tabSizeConfiguration: TabbedView.SizeConfiguration) {
+        self.sizeConfiguration = tabSizeConfiguration
         super.init(frame: .zero)
         
         self.setupUI()
@@ -24,10 +24,11 @@ class ViewPager: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let tabHeight: CGFloat
+    public let sizeConfiguration: TabbedView.SizeConfiguration
+    
     public lazy var tabbedView: TabbedView = {
         let tabbedView = TabbedView(
-            sizeConfiguration: .fillEqually(height: tabHeight)
+            sizeConfiguration: sizeConfiguration
         )
         return tabbedView
     }()
@@ -49,7 +50,7 @@ class ViewPager: UIView {
             tabbedView.rightAnchor
                 .constraint(equalTo: self.rightAnchor),
             tabbedView.heightAnchor
-                .constraint(equalToConstant: tabHeight)
+                .constraint(equalToConstant: sizeConfiguration.height)
         ])
         
         NSLayoutConstraint.activate([

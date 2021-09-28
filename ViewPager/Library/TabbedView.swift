@@ -16,7 +16,15 @@ class TabbedView: UIView {
     enum SizeConfiguration {
         case fillEqually(height: CGFloat, spacing: CGFloat = 0)
         case fixed(width: CGFloat, height: CGFloat, spacing: CGFloat = 0)
-        case automatic
+        
+        var height: CGFloat {
+            switch self {
+            case let .fillEqually(height, _):
+                return height
+            case let .fixed(_, height, _):
+                return height
+            }
+        }
     }
     
     // MARK: - Lifecycle
@@ -58,7 +66,6 @@ class TabbedView: UIView {
         collectionView.register(TabCollectionViewCell.self, forCellWithReuseIdentifier: "TabCollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints =  false
         return collectionView
@@ -112,9 +119,6 @@ extension TabbedView: UICollectionViewDelegateFlowLayout {
         case let .fixed(width, height, spacing):
             return CGSize(width: width - (spacing * 2),
                           height: height)
-        case .automatic:
-            return CGSize(width: tabs[indexPath.item].frame.width,
-                          height: self.frame.height)
         }
     }
     
@@ -124,19 +128,6 @@ extension TabbedView: UICollectionViewDelegateFlowLayout {
              let .fixed(_, _, spacing):
             
             return spacing
-        default:
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch sizeConfiguration {
-        case let .fillEqually(_, spacing),
-             let .fixed(_, _, spacing):
-            
-            return UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        default:
-            return .zero
         }
     }
 }

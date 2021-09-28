@@ -9,8 +9,9 @@ import UIKit
 
 class AppTabItemView: UIView, TabItemProtocol {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(title: String) {
+        self.title = title
+        super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setupUI()
@@ -20,11 +21,13 @@ class AppTabItemView: UIView, TabItemProtocol {
         fatalError("")
     }
     
+    private let title: String
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
-        label.text = "Title"
+        label.text = title
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
